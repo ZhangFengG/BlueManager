@@ -1,0 +1,2 @@
+# BlueManager
+communication by bluetooth
