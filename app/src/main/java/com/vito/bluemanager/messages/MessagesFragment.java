@@ -1,18 +1,21 @@
 package com.vito.bluemanager.messages;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.vito.bluemanager.R;
 import com.vito.bluemanager.data.Message;
+import com.vito.bluemanager.editmessage.EditMessageActivity;
 
 import java.util.List;
 
@@ -60,6 +63,13 @@ public class MessagesFragment extends Fragment implements MessagesContract.View,
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mListView = (ListView) view.findViewById(R.id.messages_lv);
         mListView.setAdapter(mMsgListAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), EditMessageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

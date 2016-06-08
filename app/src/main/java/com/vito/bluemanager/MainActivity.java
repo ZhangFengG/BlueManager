@@ -8,7 +8,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,14 +17,14 @@ import com.vito.bluemanager.messages.MessagesContract;
 import com.vito.bluemanager.messages.MessagesFragment;
 import com.vito.bluemanager.messages.MessagesPersenter;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private MessagesFragment mFragment;
     private MessagesContract.Persenter mPersenter;
 
-    private final static int FRAGMENT_ID = 0;
+    private final static String FRAGMENT_TAG = "FRAGMENT_TAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +59,14 @@ public class MainActivity extends AppCompatActivity
 
     private void setFragment() {
         FragmentManager fragmentManager = getFragmentManager();
-        mFragment = (MessagesFragment) fragmentManager.findFragmentById(FRAGMENT_ID);
+        mFragment = (MessagesFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG);
         if(mFragment==null){
             mFragment = new MessagesFragment();
         }
         if (mFragment.isAdded()) {
             fragmentManager.beginTransaction().show(mFragment).commit();
         }else {
-            fragmentManager.beginTransaction().add(R.id.content_fragment, mFragment).commit();
+            fragmentManager.beginTransaction().add(R.id.content_fragment, mFragment, FRAGMENT_TAG).commit();
         }
     }
 
