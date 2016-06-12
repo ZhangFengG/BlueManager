@@ -42,10 +42,10 @@
             <id />
           </State>
           <State>
-            <id>Android</id>
+            <id>Class structureJava</id>
           </State>
           <State>
-            <id>Android Lint</id>
+            <id>Code maturity issuesJava</id>
           </State>
           <State>
             <id>Java</id>
@@ -53,7 +53,24 @@
           <State>
             <id>Java language level migration aidsJava</id>
           </State>
+          <State>
+            <id>Javadoc issuesJava</id>
+          </State>
+          <State>
+            <id>Performance issuesJava</id>
+          </State>
+          <State>
+            <id>TestNG</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -75,8 +92,9 @@
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ScopeChooserConfigurable.UI">
+      <state key="ProjectJDKs.UI">
         <settings>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

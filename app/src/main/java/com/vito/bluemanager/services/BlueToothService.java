@@ -2,7 +2,6 @@ package com.vito.bluemanager.services;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
 
@@ -52,7 +51,7 @@ public class BlueToothService {
         for (BluetoothDevice bluetoothDevice : set) {
             Contact contact = new Contact();
             contact.setName(bluetoothDevice.getName());
-            contact.setName(bluetoothDevice.getAddress());
+            contact.setMac(bluetoothDevice.getAddress());
             list.add(contact);
         }
         return list;

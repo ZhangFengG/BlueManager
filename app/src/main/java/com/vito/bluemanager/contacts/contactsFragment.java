@@ -78,6 +78,12 @@ public class ContactsFragment extends Fragment implements ContactsContract.View{
         mContactsAdapter.notifyContactsChange(dataSet);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPersenter.unsubscribe();
+    }
+
     private static class ContactsAdapter extends BaseAdapter{
 
         private List<Contact> contactList;
