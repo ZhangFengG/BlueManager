@@ -22,6 +22,10 @@
 
         </activity>
 
+        <activity android:name=".contacts.ContactsActivity">
+
+        </activity>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.vito.bluemanager;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.vito.bluemanager.contacts.ContactsActivity;
 import com.vito.bluemanager.messages.MessagesContract;
 import com.vito.bluemanager.messages.MessagesFragment;
 import com.vito.bluemanager.messages.MessagesPersenter;
@@ -113,6 +115,8 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
+            Intent intent = new Intent(this, ContactsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_manage) {
 

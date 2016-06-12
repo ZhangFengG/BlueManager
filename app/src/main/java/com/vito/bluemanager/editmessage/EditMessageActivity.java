@@ -1,6 +1,5 @@
 package com.vito.bluemanager.editmessage;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -37,10 +36,10 @@ public class EditMessageActivity extends BaseActivity{
         });
 
         FragmentManager fragmentManager = getFragmentManager();
-        EditMessageFragment editFragment = (EditMessageFragment) fragmentManager.findFragmentById(R.id.content_editmessage);
+        EditMessageFragment editFragment = (EditMessageFragment) fragmentManager.findFragmentById(R.id.content_fragment);
         if(editFragment==null){
             editFragment = new EditMessageFragment();
-            fragmentManager.beginTransaction().add(R.id.content_editmessage, editFragment, EDIT_MSG_TAG).commit();
+            fragmentManager.beginTransaction().add(R.id.content_fragment, editFragment, EDIT_MSG_TAG).commit();
         }
 
         new EditMessagePersenter(editFragment);
