@@ -40,7 +40,7 @@ public class ContactsFragment extends Fragment implements ContactsContract.View{
         super.onCreate(savedInstanceState);
         mContactList = new ArrayList<Contact>();
         Contact contact = new Contact();
-        contact.setId(10021);
+        contact.setMac("1021520");
         contact.setName("大客户");
         mContactList.add(contact);
         mContactsAdapter = new ContactsAdapter(mContactList);
@@ -57,6 +57,12 @@ public class ContactsFragment extends Fragment implements ContactsContract.View{
         return null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPersenter.landContacts();
+    }
+
     private void initViews(View view) {
         mListView = (ListView) view.findViewById(R.id.contact_lv);
         mListView.setAdapter(mContactsAdapter);
@@ -65,6 +71,11 @@ public class ContactsFragment extends Fragment implements ContactsContract.View{
     @Override
     public void setPersenter(ContactsContract.Persenter persenter) {
         mPersenter = persenter;
+    }
+
+    @Override
+    public void showContacts(List<Contact> dataSet) {
+        mContactsAdapter.notifyContactsChange(dataSet);
     }
 
     private static class ContactsAdapter extends BaseAdapter{
@@ -96,7 +107,7 @@ public class ContactsFragment extends Fragment implements ContactsContract.View{
             TextView name = (TextView) convertView.findViewById(R.id.contact_name_tv);
             TextView id = (TextView) convertView.findViewById(R.id.contact_id_tv);
             name.setText(contactList.get(position).getName());
-            id.setText(""+contactList.get(position).getId());
+            id.setText(contactList.get(position).getMac());
             return convertView;
         }
 

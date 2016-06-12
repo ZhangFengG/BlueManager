@@ -10,7 +10,7 @@ package com.vito.bluemanager.data;
  */
 public final class Contact {
     private String mName;
-    private int mId;
+    private String mMac;
 
     public String getName() {
         return mName;
@@ -20,11 +20,11 @@ public final class Contact {
         mName = name;
     }
 
-    public int getId() {
-        return mId;
+    public String getMac() {
+        return mMac;
     }
 
-    public void setId(int id) {
-        mId = id;
+    public void setMac(String mac) {
+        mMac = mac;
     }
 }

@@ -2,6 +2,9 @@ package com.vito.bluemanager.contacts;
 
 import com.vito.bluemanager.BasePresenter;
 import com.vito.bluemanager.BaseView;
+import com.vito.bluemanager.data.Contact;
+
+import java.util.List;
 
 /**
  * @Description: TODO
@@ -15,9 +18,13 @@ public interface ContactsContract {
 
     interface View extends BaseView<Persenter>{
 
+        void showContacts(List<Contact> dataSet);
+
     }
 
     interface Persenter extends BasePresenter{
+
+        void landContacts();
 
     }
 }

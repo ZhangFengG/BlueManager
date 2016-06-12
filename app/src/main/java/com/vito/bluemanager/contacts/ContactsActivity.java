@@ -18,7 +18,6 @@ import com.vito.bluemanager.R;
 public class ContactsActivity extends AppCompatActivity{
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -18,6 +18,7 @@ import com.vito.bluemanager.contacts.ContactsActivity;
 import com.vito.bluemanager.messages.MessagesContract;
 import com.vito.bluemanager.messages.MessagesFragment;
 import com.vito.bluemanager.messages.MessagesPersenter;
+import com.vito.bluemanager.services.BlueToothService;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +26,7 @@ public class MainActivity extends BaseActivity
 
     private MessagesFragment mFragment;
     private MessagesContract.Persenter mPersenter;
+    private BlueToothService mBlueToothService;
 
     private final static String FRAGMENT_TAG = "FRAGMENT_TAG";
 
@@ -39,8 +41,7 @@ public class MainActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                mBlueToothService.enableBlueTooth(MainActivity.this);
             }
         });
 
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity
         setFragment();
         mPersenter = new MessagesPersenter(mFragment);
 
+        mBlueToothService = BlueToothService.getInstance();
 
     }
 
