@@ -1,5 +1,6 @@
 package com.vito.bluemanager.services;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -38,10 +39,10 @@ public class BlueToothService {
         return mBlueToothService;
     }
 
-    public void enableBlueTooth(Context context){
+    public void enableBlueToothForResult(Activity activity, int requestCode){
         if (!mBluetoothAdapter.isEnabled()){
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            context.startActivity(intent);
+            activity.startActivityForResult(intent, requestCode);
         }
     }
 
@@ -55,5 +56,9 @@ public class BlueToothService {
             list.add(contact);
         }
         return list;
+    }
+
+    public boolean isBTEnable(){
+        return mBluetoothAdapter.isEnabled();
     }
 }

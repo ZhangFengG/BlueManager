@@ -25,7 +25,6 @@ public class MainActivity extends BaseActivity
 
     private MessagesFragment mFragment;
     private MessagesContract.Persenter mPersenter;
-    private BlueToothService mBlueToothService;
 
     private final static String FRAGMENT_TAG = "FRAGMENT_TAG";
 
@@ -40,7 +39,6 @@ public class MainActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mBlueToothService.enableBlueTooth(MainActivity.this);
             }
         });
 
@@ -55,8 +53,6 @@ public class MainActivity extends BaseActivity
 
         setFragment();
         mPersenter = new MessagesPersenter(mFragment);
-
-        mBlueToothService = BlueToothService.getInstance();
 
     }
 

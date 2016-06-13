@@ -46,29 +46,35 @@ public class ContactsPersenter implements ContactsContract.Persenter {
     @Override
     public void landContacts() {
 
-        Subscription subscription = rx.Observable.just(mBlueToothService).observeOn(Schedulers.io())
-                .map(new Func1<BlueToothService, List<Contact>>() {
-                    @Override
-                    public List<Contact> call(BlueToothService blueToothService) {
-                        return mBlueToothService.getBondedDevices();
-                    }
-                }).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Contact>>() {
-                    @Override
-                    public void onCompleted() {
+        Subscription subscription = rx.Observable.just(mBlueToothService
+        ).filter(new Func1<BlueToothService, Boolean>() {
+            @Override
+            public Boolean call(BlueToothService blueToothService) {
+                return blueToothService.isBTEnable();
+            }
+        }).observeOn(Schedulers.io()
+        ).map(new Func1<BlueToothService, List<Contact>>() {
+            @Override
+            public List<Contact> call(BlueToothService blueToothService) {
+                return mBlueToothService.getBondedDevices();
+            }
+        }).observeOn(AndroidSchedulers.mainThread()
+        ).subscribe(new Subscriber<List<Contact>>() {
+            @Override
+            public void onCompleted() {
 
-                    }
+            }
 
-                    @Override
-                    public void onError(Throwable e) {
+            @Override
+            public void onError(Throwable e) {
 
-                    }
+            }
 
-                    @Override
-                    public void onNext(List<Contact> contacts) {
-                        mView.showContacts(contacts);
-                    }
-                });
+            @Override
+            public void onNext(List<Contact> contacts) {
+                mView.showContacts(contacts);
+            }
+        });
         mCompositeSubscription.add(subscription);
     }
 }

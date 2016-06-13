@@ -36,10 +36,10 @@ public class EditMessageActivity extends BaseActivity{
         });
 
         FragmentManager fragmentManager = getFragmentManager();
-        EditMessageFragment editFragment = (EditMessageFragment) fragmentManager.findFragmentById(R.id.content_fragment);
+        EditMessageFragment editFragment = (EditMessageFragment) fragmentManager.findFragmentById(R.id.content_edit);
         if(editFragment==null){
             editFragment = new EditMessageFragment();
-            fragmentManager.beginTransaction().add(R.id.content_fragment, editFragment, EDIT_MSG_TAG).commit();
+            fragmentManager.beginTransaction().add(R.id.content_edit, editFragment, EDIT_MSG_TAG).commit();
         }
 
         new EditMessagePersenter(editFragment);
