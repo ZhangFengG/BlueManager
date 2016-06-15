@@ -3,7 +3,6 @@ package com.vito.bluemanager.services;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.Context;
 import android.content.Intent;
 
 import com.vito.bluemanager.data.Contact;
@@ -20,23 +19,23 @@ import java.util.Set;
  * @ModifiedNotes:
  * @Version
  */
-public class BlueToothService {
+public class BluetoothManager {
 
     private BluetoothAdapter mBluetoothAdapter;
-    private static BlueToothService mBlueToothService;
+    private static BluetoothManager mBluetoothManager;
 
-    private BlueToothService(){
+    private BluetoothManager(){
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if(mBluetoothAdapter == null){
             //不支持蓝牙
         }
     }
 
-    public static BlueToothService getInstance(){
-        if(mBlueToothService==null){
-            mBlueToothService = new BlueToothService();
+    public static BluetoothManager getInstance(){
+        if(mBluetoothManager ==null){
+            mBluetoothManager = new BluetoothManager();
         }
-        return mBlueToothService;
+        return mBluetoothManager;
     }
 
     public void enableBlueToothForResult(Activity activity, int requestCode){

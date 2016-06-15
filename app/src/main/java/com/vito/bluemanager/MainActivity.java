@@ -17,7 +17,6 @@ import com.vito.bluemanager.contacts.ContactsActivity;
 import com.vito.bluemanager.messages.MessagesContract;
 import com.vito.bluemanager.messages.MessagesFragment;
 import com.vito.bluemanager.messages.MessagesPersenter;
-import com.vito.bluemanager.services.BlueToothService;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +32,7 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_send);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

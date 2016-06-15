@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.vito.bluemanager.R;
-import com.vito.bluemanager.services.BlueToothService;
+import com.vito.bluemanager.services.BluetoothManager;
 
 /**
  * @Description: TODO
@@ -19,7 +19,7 @@ import com.vito.bluemanager.services.BlueToothService;
  */
 public class ContactsActivity extends AppCompatActivity{
 
-    private BlueToothService mBlueToothService;
+    private BluetoothManager mBluetoothManager;
     private ContactsPersenter mContactsPersenter;
 
     private static final int REQUEST_BT_ENABLE = 1;
@@ -34,7 +34,7 @@ public class ContactsActivity extends AppCompatActivity{
     }
 
     private void init() {
-        mBlueToothService = BlueToothService.getInstance();
+        mBluetoothManager = BluetoothManager.getInstance();
         FragmentManager fragmentManager = getFragmentManager();
         ContactsFragment contactsFragment = (ContactsFragment) fragmentManager.findFragmentById(R.id.content_fragment);
         if(contactsFragment==null){
@@ -42,7 +42,7 @@ public class ContactsActivity extends AppCompatActivity{
             fragmentManager.beginTransaction().add(R.id.content_fragment, contactsFragment).commit();
         }
         mContactsPersenter = new ContactsPersenter(contactsFragment);
-        mBlueToothService.enableBlueToothForResult(this, REQUEST_BT_ENABLE);
+        mBluetoothManager.enableBlueToothForResult(this, REQUEST_BT_ENABLE);
     }
 
     @Override
